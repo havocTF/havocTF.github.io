@@ -41,13 +41,13 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     width: 33vw;
-    height: 20px;
+    min-height: 20px;
     position:absolute;
     top: 0px;
     right: 0px;
 }
 li{
-    height: 20px;
+    min-height: 20px;
     display: flex;
     justify-content: center;
     list-style-type: none;
