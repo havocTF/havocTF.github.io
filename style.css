@@ -1,0 +1,57 @@
+.container{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+ .questions{
+justify-content: center;
+    width: 33vw;
+}
+.fillIn{
+    max-width: 33vw;
+    width: 31.5vw;
+    
+} 
+.answers{
+    width: 33vw;
+    justify-content: center;
+} 
+#fname{
+    display: flex;
+    justify-content: center;
+}
+.butt{
+    
+}
+h1{
+    display: flex;
+    justify-content: center;
+}
+h2{
+    display: flex;
+    justify-content: center;
+}
+input[type="text"] {
+    width: 30.75vw;
+    height: 20px;
+}
+.review{
+    display: flex;
+    justify-content: center;
+    width: 33vw;
+    height: 20px;
+    position:absolute;
+    top: 0px;
+    right: 0px;
+}
+li{
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    align-items: center;
+    border: solid;
+    
+list-style-type:none;
+}
