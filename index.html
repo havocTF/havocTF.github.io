@@ -281,7 +281,7 @@
       function cleartextBoxes() {
         let textBoxes = document.getElementsByClassName("fname");
         for (var i = 0; i < textBoxes.length; i++) {
-          textBoxes[i].value = "";
+          textBoxes[i].reset();
         }
       }
       function createNewLists() {
