@@ -46,7 +46,7 @@ input[type="text"] {
     right: 0px;
 }
 li{
-    height: 23px;
+    height: 20px;
     display: flex;
     justify-content: center;
     list-style-type: none;
