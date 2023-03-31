@@ -40,6 +40,7 @@ input[type="text"] {
     width: 30.75vw;
     height: 20px;
     background: transparent;
+    border: none;
 }
 .review{
     display: flex;
