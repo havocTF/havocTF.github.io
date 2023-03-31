@@ -39,6 +39,7 @@ h2{
 input[type="text"] {
     width: 30.75vw;
     height: 20px;
+    background: transparent;
 }
 .review{
     display: flex;
