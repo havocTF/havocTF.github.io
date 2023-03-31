@@ -23,6 +23,7 @@
   </head>
   <button class="review" onclick="review()">Show Answer</button>
   <body>
+    <div class="cover"></div>
     <h1>wakabayashi simulator</h1>
     <h2>
       <button class="butt" onclick="generate()">Regenerate</button>
@@ -103,7 +104,12 @@
         <li>
           <input type="text" id="fname" name="fname" class="fname" />
         </li>
-        
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
       </div>
 
       <div class="answers" id="answer"></div>
@@ -321,6 +327,7 @@
         k();
         K();
 
+        changePic();
         deleteLists();
         cleartextBoxes();
         createNewLists();
@@ -377,6 +384,12 @@
       function review() {
         let answers = document.getElementById("answer");
         answers.style.color = "black";
+      }
+
+      function changePic() {
+        var imagenum = Math.floor(Math.random() * 3);
+        document.body.style.backgroundImage = "url(../pics/1)";
+        console.log("Set");
       }
     </script>
   </body>
