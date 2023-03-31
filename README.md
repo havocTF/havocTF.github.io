@@ -1,1 +1,1 @@
-ya theres a test tmr and i made this instead of actually studying
+ya theres a test tmr and im making this instead of actually studying
