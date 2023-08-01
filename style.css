@@ -14,7 +14,7 @@ justify-content: center;
     
 } 
 body{
-    
+    background-repeat: no-repeat;
     z-index: -3;
 }
 .answers{
@@ -62,10 +62,14 @@ li{
 list-style-type:none;
 }
 .cover{
-    opacity: 90%;
+    opacity: 60%;
     background-color: white;
     position: fixed;
     height: 100vh;
     width: 100vw;
     z-index: -2;
+}
+
+backgroundImage{
+
 }
