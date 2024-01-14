@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1024px" />
+    <title>wakabayashi vocabs</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Rajdhani"
+    />
+    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  </head>
+
+  <body>
+    <div class="cover"></div>
+    <h1>wakabayashi simulator</h1>
+
+    <h2>
+      <button class="butt" onclick="generate()">Regenerate</button>
+      <button class="butt" onclick="review()">Show Answer</button>
+    </h2>
+
+    <div class="container">
+      <div class="questions" id="question"></div>
+      <div class="fillIn">
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+        <li>
+          <input type="text" id="fname" name="fname" class="fname" />
+        </li>
+      </div>
+
+      <div class="answers" id="answer"></div>
+    </div>
+
+    <script>
+      var hiraganas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var katakanas = [0, 0, 0, 0];
+      var kanjis = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var displayHiraganas = ["", "", "", "", "", "", "", "", "", ""];
+      var displayKatakanaMeanings = ["", "", "", ""];
+      var displayKatakanas = ["", "", "", ""];
+      var displayHiraganaMeanings = ["", "", "", "", "", "", "", "", "", ""];
+      var displayKanjis = ["", "", "", "", "", "", "", "", "", ""];
+      var displayKanjiMeanings = ["", "", "", "", "", "", "", "", "", ""];
+      var questionList = [];
+      var answerList = [];
+
+      var hiraganaRows = [];
+      var hDone = false;
+      var katakanaRows = [];
+      var kDone = false;
+      var kanjiRows = [];
+      var KDone = false;
+
+      // Create a new XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+
+      // Set the URL of the published Google Sheet
+      const url =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRWJfhjqUGOTLxPzMjW2u2EwcsU3xvxY9HjQLqICiaj4KCObAOoWJVDQE3Exeul9PRJ5NI6IZMK7V8K/pubhtml?gid=0&single=true";
+
+      const url2 =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRWJfhjqUGOTLxPzMjW2u2EwcsU3xvxY9HjQLqICiaj4KCObAOoWJVDQE3Exeul9PRJ5NI6IZMK7V8K/pubhtml?gid=1668525583&single=true";
+      const url3 =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRWJfhjqUGOTLxPzMjW2u2EwcsU3xvxY9HjQLqICiaj4KCObAOoWJVDQE3Exeul9PRJ5NI6IZMK7V8K/pubhtml?gid=989652275&single=true";
+      // Set the response type to "document"
+      xhr.responseType = "document";
+
+      // When the request completes successfully, parse the data and add it to the table
+      xhr.onload = function () {
+        if (hDone == false) {
+          const tableBody = document.querySelector("#data-table tbody");
+          const doc = xhr.response;
+
+          const table = doc.getElementsByTagName("table")[0];
+          const rows = table.rows;
+          for (let i = 1; i < rows.length; i++) {
+            const row = rows[i].cells;
+            const rowData = [];
+            for (let j = 0; j < row.length; j++) {
+              rowData.push(row[j].innerText);
+            }
+            hiraganaRows.push(rowData);
+          }
+          console.log(hiraganaRows);
+
+          hDone = true;
+          initKata();
+        } else if (kDone == false) {
+          const tableBody = document.querySelector("#data-table tbody");
+          const doc = xhr.response;
+
+          const table = doc.getElementsByTagName("table")[0];
+          const rows = table.rows;
+          for (let i = 1; i < rows.length; i++) {
+            const row = rows[i].cells;
+            const rowData = [];
+            for (let j = 0; j < row.length; j++) {
+              rowData.push(row[j].innerText);
+            }
+            katakanaRows.push(rowData);
+          }
+
+          kDone = true;
+          initKanji();
+        } else {
+          const tableBody = document.querySelector("#data-table tbody");
+          const doc = xhr.response;
+
+          const table = doc.getElementsByTagName("table")[0];
+          const rows = table.rows;
+          for (let i = 1; i < rows.length; i++) {
+            const row = rows[i].cells;
+            const rowData = [];
+            for (let j = 0; j < row.length; j++) {
+              rowData.push(row[j].innerText);
+            }
+            kanjiRows.push(rowData);
+          }
+          KDone = true;
+        }
+      };
+
+      // Send the request
+      xhr.open("GET", url, true);
+      xhr.send();
+
+      function initKata() {
+        xhr.open("GET", url2, true);
+        xhr.send();
+      }
+      function initKanji() {
+        xhr.open("GET", url3, true);
+        xhr.send();
+      }
+
+      function getRandomHiragana() {
+        var x = Math.floor(Math.random() * 788);
+        console.log(x);
+        return x;
+      }
+      function getRandomKatakana() {
+        var x = Math.floor(Math.random() * 329);
+        return x;
+      }
+      function getRandomKanji() {
+        var x = Math.floor(Math.random() * 644);
+        return x;
+      }
+
+      function listOfTen() {
+        for (var i = 0; i < 10; i++) {
+          var x = false;
+          while (x == false) {
+            var num = getRandomHiragana();
+            if (!hiraganas.includes(num)) {
+              x = true;
+              hiraganas[i] = num;
+            }
+          }
+        }
+      }
+
+      function listOfFour() {
+        for (var i = 0; i < 4; i++) {
+          var x = false;
+          while (x == false) {
+            var num = getRandomKatakana();
+            if (!katakanas.includes(num)) {
+              x = true;
+              katakanas[i] = num;
+            }
+          }
+        }
+      }
+
+      function listOfTen2() {
+        for (var i = 0; i < 10; i++) {
+          var x = false;
+          while (x == false) {
+            var num = getRandomKanji();
+            if (!kanjis.includes(num)) {
+              x = true;
+              kanjis[i] = num;
+            }
+          }
+        }
+      }
+
+      function getHiragana() {
+        for (var i = 0; i < 10; i++) {
+          var b = hiraganaRows[hiraganas[i]];
+          displayHiraganas[i] = b[1];
+          displayHiraganaMeanings[i] = b[2];
+        }
+      }
+      function getKatakana() {
+        for (var i = 0; i < 4; i++) {
+          var b = katakanaRows[katakanas[i]];
+          displayKatakanas[i] = b[1];
+          displayKatakanaMeanings[i] = b[2];
+        }
+      }
+      function getKanji() {
+        for (var i = 0; i < 10; i++) {
+          var b = kanjiRows[kanjis[i]];
+          displayKanjis[i] = b[1];
+          displayKanjiMeanings[i] = b[2];
+        }
+      }
+
+      function h() {
+        listOfTen();
+        getHiragana();
+      }
+      function k() {
+        listOfFour();
+        getKatakana();
+      }
+      function K() {
+        listOfTen2();
+        getKanji();
+      }
+
+      function print() {
+        for (var i = 0; i < 10; i++) {
+          console.log(displayHiraganas[i]);
+          console.log(displayHiraganaMeanings[i]);
+        }
+        for (var i = 0; i < 4; i++) {
+          console.log(displayKatakanas[i]);
+          console.log(displayKatakanaMeanings[i]);
+        }
+        for (var i = 0; i < 10; i++) {
+          console.log(displayKanjis[i]);
+          console.log(displayKanjiMeanings[i]);
+        }
+        createNewLists();
+        showNewList();
+      }
+      var count = 0;
+      function generate() {
+        h();
+        k();
+        K();
+
+        deleteLists();
+        cleartextBoxes();
+        createNewLists();
+        showNewList();
+      }
+
+      function cleartextBoxes() {
+        let textBoxes = document.getElementsByClassName("fname");
+        for (var i = 0; i < textBoxes.length; i++) {
+          textBoxes[i].value = "";
+          console.log(i);
+        }
+      }
+      function createNewLists() {
+        questionList = [
+          ...displayHiraganas,
+          ...displayKatakanas,
+          ...displayKanjis,
+        ];
+        answerList = [
+          ...displayHiraganaMeanings,
+          ...displayKatakanaMeanings,
+          ...displayKanjiMeanings,
+        ];
+      }
+
+      function deleteLists() {
+        let questions = document.getElementById("question");
+        let answers = document.getElementById("answer");
+        questions.innerHTML = "";
+        answers.innerHTML = "";
+      }
+
+      function showNewList() {
+        let questions = document.getElementById("question");
+
+        questionList.forEach((item) => {
+          let li = document.createElement("li");
+          li.innerText = item;
+          li.className = "removable";
+          questions.appendChild(li);
+        });
+
+        let answers = document.getElementById("answer");
+        answers.style.color = "transparent";
+        answerList.forEach((item) => {
+          let li = document.createElement("li");
+          li.innerText = item;
+          li.className = "removable";
+          answers.appendChild(li);
+        });
+      }
+
+      function review() {
+        let answers = document.getElementById("answer");
+        answers.style.color = "black";
+      }
+
+      function changePic() {
+        var imagenum = Math.floor(Math.random() * 13);
+        document.body.style.backgroundImage =
+          "url(./pics/" + imagenum + ".png)";
+        console.log("Set");
+      }
+    </script>
+  </body>
+</html>
