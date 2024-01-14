@@ -264,11 +264,7 @@
         cleartextBoxes();
         createNewLists();
         showNewList();
-        restartedcounter = restartedcounter + 1;
-        counsole.log(restartedcounter);
-        let changed = document.getElementByID("scoring");
-        let newchange = "Score is = ", restartedcounter;
-        changed[0].innertext() = newchange;
+        updateScore();
       }
 
       function cleartextBoxes() {
