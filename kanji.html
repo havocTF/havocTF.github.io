@@ -30,6 +30,7 @@
       <button class="butt" onclick="generate()">Regenerate</button>
       <button class="butt" onclick="review()">Show Answer</button>
     </h2>
+    <h3>Score = 0</h3>
 
     <div class="container">
       <div class="questions" id="question"></div>
@@ -249,6 +250,12 @@
         showNewList();
       }
       var count = 0;
+      var restartedcounter = 0; 
+      function score() {
+        restartedcounter += 1;
+        counsole.log(restartedcounter);
+        
+      }
       function generate() {
         h();
         k();
@@ -258,6 +265,7 @@
         cleartextBoxes();
         createNewLists();
         showNewList();
+
       }
 
       function cleartextBoxes() {
