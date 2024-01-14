@@ -30,7 +30,7 @@
       <button class="butt" onclick="generate()">Regenerate</button>
       <button class="butt" onclick="review()">Show Answer</button>
     </h2>
-    <h3>Score = 0</h3>
+    <h3 id="scoring">Score = 0</h3>
 
     <div class="container">
       <div class="questions" id="question"></div>
@@ -252,8 +252,12 @@
       var count = 0;
       var restartedcounter = 0; 
       function score() {
+
         restartedcounter += 1;
         counsole.log(restartedcounter);
+        let changed = document.getElementByID("scoring");
+        let newchange = "Score is = ", restartedcounter;
+        changed[0].innertext() = newchange;
         
       }
       function generate() {
@@ -265,7 +269,7 @@
         cleartextBoxes();
         createNewLists();
         showNewList();
-
+        score();
       }
 
       function cleartextBoxes() {
