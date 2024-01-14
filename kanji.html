@@ -251,15 +251,6 @@
       }
       var count = 0;
 
-      function score() {
-
-        restartedcounter = restartedcounter + 1;
-        counsole.log(restartedcounter);
-        let changed = document.getElementByID("scoring");
-        let newchange = "Score is = ", restartedcounter;
-        changed[0].innertext() = newchange;
-        
-      }
       function generate() {
         h();
         k();
@@ -269,7 +260,11 @@
         cleartextBoxes();
         createNewLists();
         showNewList();
-        score();
+        restartedcounter = restartedcounter + 1;
+        counsole.log(restartedcounter);
+        let changed = document.getElementByID("scoring");
+        let newchange = "Score is = ", restartedcounter;
+        changed[0].innertext() = newchange;
       }
 
       function cleartextBoxes() {
