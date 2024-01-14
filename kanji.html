@@ -55,7 +55,7 @@
       var displayKanjiMeanings = ["", "", "", "", "", "", "", "", "", ""];
       var questionList = [];
       var answerList = [];
-      let restartedcounter = 0; 
+      let score = 0; 
       var hiraganaRows = [];
       var hDone = false;
       var katakanaRows = [];
@@ -250,7 +250,11 @@
         showNewList();
       }
       var count = 0;
-
+      function updateScore() {
+      score++;
+      const scoringHeading = document.getElementById("scoring");
+      scoringHeading.textContent = `The score is now ${score}`;
+      }
       function generate() {
         h();
         k();
