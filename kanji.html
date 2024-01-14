@@ -253,7 +253,7 @@
 
       function score() {
 
-        restartedcounter += 1;
+        restartedcounter = restartedcounter + 1;
         counsole.log(restartedcounter);
         let changed = document.getElementByID("scoring");
         let newchange = "Score is = ", restartedcounter;
